@@ -12,3 +12,9 @@ reload
 console
 test
 exit
+compile
+test
+reload
+console
+test
+exit
