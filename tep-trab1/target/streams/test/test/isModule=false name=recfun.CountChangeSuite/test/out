@@ -1,0 +1,5 @@
+[0m[[0minfo[0m] [0m[32mCountChangeSuite:[0m[0m
+[0m[[0minfo[0m] [0m[32m- countChange: exemplo dado nas instruções[0m[0m
+[0m[[0minfo[0m] [0m[32m- countChange: money = 2 and coins = {1, 2} [0m[0m
+[0m[[0minfo[0m] [0m[32m- countChange: money = 2 and coins = {} [0m[0m
+[0m[[0minfo[0m] [0m[32m- countChange: money = -1 and coins = {1} [0m[0m

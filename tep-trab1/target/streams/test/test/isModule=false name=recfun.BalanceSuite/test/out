@@ -1,0 +1,5 @@
+[0m[[0minfo[0m] [0m[32mBalanceSuite:[0m[0m
+[0m[[0minfo[0m] [0m[32m- balance: '(if (zero? x) max (/ 1 x))' is balanced[0m[0m
+[0m[[0minfo[0m] [0m[32m- balance: ':-)' is not balanced[0m[0m
+[0m[[0minfo[0m] [0m[32m- balance: '())(' is not balanced[0m[0m
+[0m[[0minfo[0m] [0m[32m- balance: 'hello' is balanced[0m[0m
