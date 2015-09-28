@@ -20,9 +20,6 @@ object FunSets {
   /** Retorna o conjunto que contém exatamente o elemento indicado.
     */
   def singletonSet(elem: Int): Set = item => item == elem
-  
-  /* Definicao auxiliar para ajudar a criar uma nocao de conjunto nas funcoes seguintes... */
-  def vazio(elem: Int) : Set = item => false
 
   /** Retorna a união dos dois conjuntos dados, i.e., o conjunto de
     * todos os elementos que estão em `s` ou em `t`.
@@ -38,7 +35,7 @@ object FunSets {
     * conjunto contendo todos os elementos que estão em `s` e não estão
     * em `t`.
     */
-  def diff(s: Set, t: Set): Set = item => s(item) && (t(item) == false)
+  def diff(s: Set, t: Set): Set = item => s(item) && !t(item) 
 
   /** Retorna o subconjunto de `s` para o qual `p` é verdadeiro.
     */
@@ -55,23 +52,33 @@ object FunSets {
     */
   def forall(s: Set, p: Int => Boolean): Boolean = {
     def iter(a: Int): Boolean = {
-      if (???) ???
-      else if (???) ???
-      else iter(???)
+      if (a > bound) true
+      else if (s(a) && !p(a)) false
+      else iter(a + 1)
     }
-    iter(???)
+    iter(- bound)
   }
 
   /** Retorna `true` se *algum* dos inteiros (entre os limites
     * especificados por `bound`) dentro de `s` satisfazem o predicado
     * `p`; e `false` caso contrário.
     */
-  def exists(s: Set, p: Int => Boolean): Boolean = ???
+  def exists(s: Set, p: Int => Boolean): Boolean = { !forall(s, item => !p(item))}
 
+  /* Definicao auxiliar para ser o ponto de parada em map */
+  def vazio(elem: Int) : Set = item => false
+  
   /** Retorna um conjunto transformado pela aplicação de `f` a cada
    * elemntos do conjunto `s`.
    */
-  def map(s: Set, f: Int => Int): Set = ???
+  def map(s: Set, f: Int => Int): Set = {
+    def iter(item: Int): Set = {
+      if (item > bound) vazio(item)
+      else if (s(item)) union(singletonSet(f(item)), iter(item + 1))
+      else iter(item + 1)
+    }
+    iter(-bound)
+  }
 
   /** Exibe o conteúdo de um conjunto -- dentro dos limites definidos
     * por `bound`.

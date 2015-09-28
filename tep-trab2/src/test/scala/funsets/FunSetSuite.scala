@@ -5,6 +5,8 @@ import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
+/* Aluna: Isabella de Albuquerque Ceravolo */
+
 /** Esta classe implementa um conjunto de testes para os métodos do
   * objeto FunSets. Para executar este conjunto de testes você deve
   * executar o comando `test` no console do SBT.
@@ -55,6 +57,12 @@ class FunSetSuite extends FunSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+	val s4 = singletonSet(1)
+	def f = (x: Int) => true
+	def par = (y: Int) => y % 2 == 0
+	def maior = (y: Int) => y < y + 1
+	def complexo = (y: Int) => y * y == -1
+	def quadrado = (y: Int) => y * y
   }
 
   /** Este teste está desabilitado (usando a função `ignore`) porque o
@@ -64,7 +72,7 @@ class FunSetSuite extends FunSuite {
     * Quando você terminar de implementar o `singletonSet`, troque a
     * função `ignore` por `test` para executar o teste.
     */
-  ignore("singletonSet(1) contains 1") {
+  test("singletonSet(1) contains 1") {
 
     /** Ao criar uma nova instância do trait `TestSets`, ganha-se acesso
       * ao valores `s1`, `s2` e `s3` que podem ser usados no teste.
@@ -77,5 +85,64 @@ class FunSetSuite extends FunSuite {
   }
 
   // Escreva o restante dos testes.
+  
+  // Teste Union
+  test("Union Tests") {
+    new TestSets {
+      assert(union(s1, s2)(1), "s1 union s2 contains 1")
+      assert(union(s1, s1)(1), "s1 union s1 contains 1")
+	  assert(!union(s1, s2)(3), "s1 union s2 not contains 3")
+    }
+  }
+  
+  // Teste Intersect
+  test("Intersect Tests") {
+    new TestSets {
+      assert(intersect(s1, s4)(1), "s1 intersect s4 contains 1")
+      assert(intersect(s1, s1)(1), "s1 intersect s1 contains 1")
+	  assert(!intersect(s1, s2)(1), "s1 intersect s2 not contains 1")
+    }
+  }
+  
+  // Teste Diff
+  test("Difference Tests") {
+    new TestSets {
+      assert(diff(s1, s2)(1), "s1 diff s2 contains 1")
+      assert(!diff(s1, s1)(1), "s1 diff s1 not contains 1")
+	  assert(!diff(s1, s4)(1), "s1 diff s4 not contains 1")
+    }
+  }
+  
+  // Teste Filter
+  test("Filter Tests") {
+    new TestSets {
+      assert(!filter(f, par)(1), "f filter (y: Int) => y % 2 == 0 not contains 1")
+      assert(filter(f, par)(2), "f filter (y: Int) => y % 2 == 0 contains 2")
+    }
+  }
+  
+  // Teste Forall
+  test("Forall Tests") {
+    new TestSets {
+      assert(!forall(f, par), "(y: Int) => y % 2 == 0 is not true for all f")
+      assert(forall(f, maior), "(y: Int) => y < y + 1 is true for all f")
+    }
+  }
+  
+  // Teste Exists
+  test("Exists Tests") {
+    new TestSets {
+      assert(!exists(f, complexo), "(y: Int) => y * y == -1 not exists for f")
+      assert(exists(f, maior), "(y: Int) => y < y + 1 exists in f")
+    }
+  }
+  
+  // Teste Map
+  test("Map Tests") {
+    new TestSets {
+      assert(!contains(map(f, quadrado), -1), "map(f, quadrado) not contains -1")
+      assert(contains(map(f, quadrado), 1), "map(f, quadrado) contains 1")
+    }
+  }
 
 }

@@ -1,0 +1,10 @@
+[0m[[0minfo[0m] [0m[32mFunSetSuite:[0m[0m
+[0m[[0minfo[0m] [0m[32m- contains foi implementado[0m[0m
+[0m[[0minfo[0m] [0m[32m- singletonSet(1) contains 1[0m[0m
+[0m[[0minfo[0m] [0m[32m- Union Tests[0m[0m
+[0m[[0minfo[0m] [0m[32m- Intersect Tests[0m[0m
+[0m[[0minfo[0m] [0m[32m- Difference Tests[0m[0m
+[0m[[0minfo[0m] [0m[32m- Filter Tests[0m[0m
+[0m[[0minfo[0m] [0m[32m- Forall Tests[0m[0m
+[0m[[0minfo[0m] [0m[32m- Exists Tests[0m[0m
+[0m[[0minfo[0m] [0m[32m- Map Tests[0m[0m
